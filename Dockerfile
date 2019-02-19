@@ -7,7 +7,7 @@ RUN npm install -g yapi-cli \
     && tar -zxf *.gz \
     && rm -f *.gz \
     && cd /yapi/yapi-1.5.2 \
-    && npm install
+    && npm install && npm install -g node-gyp
 
 WORKDIR /yapi/yapi-1.5.2
 
@@ -15,6 +15,6 @@ WORKDIR /yapi/yapi-1.5.2
 #CMD ["vendors/server/app.js"]
 EXPOSE 27017
 EXPOSE 3000
-COPY config.json /app/yapi/config.json
+COPY config.json /yapi/config.json
 
 CMD mongod --fork && [ ! -e /data/db/yapiInit.lock ] && npm run install-server && touch /data/db/yapiInit.lock; npm run start
