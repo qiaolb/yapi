@@ -17,4 +17,4 @@ EXPOSE 27017
 EXPOSE 3000
 COPY config.json /yapi/config.json
 
-CMD mongod --fork && [ ! -e /data/db/yapiInit.lock ] && npm run install-server && touch /data/db/yapiInit.lock; npm run start
+CMD mongod --fork --logpath /var/log/mongodb.log && [ ! -e /data/db/yapiInit.lock ] && npm run install-server && touch /data/db/yapiInit.lock; npm run start
