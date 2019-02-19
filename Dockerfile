@@ -5,7 +5,9 @@ RUN npm install -g yapi-cli \
     && mkdir /yapi && cd /yapi  \
     && wget https://github.com/YMFE/yapi/archive/v1.5.2.tar.gz \
     && tar -zxf *.gz \
-    && rm -f *.gz
+    && rm -f *.gz \
+    && cd /yapi/yapi-1.5.2 \
+    && npm install
 
 WORKDIR /yapi/yapi-1.5.2
 
