@@ -3,12 +3,6 @@ Yapi docker
 
 Dockerized Yapi environment.
 
-## usage
-
-* 首次安装：  `docker-compose up install`
-* 运行服务：  `docker-compose up web` or with `-d`
-* 停止服务：  `docker-compose down`
-* 更新 yapi：`docker-compose up update` 
 
 ## notice
 
