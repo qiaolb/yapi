@@ -4,7 +4,8 @@ RUN npm install -g yapi-cli \
     && apk update && apk add --no-cache mongodb make python git \
     && mkdir /yapi && cd /yapi  \
     && wget https://github.com/YMFE/yapi/archive/v1.5.2.tar.gz \
-    && tar -zxf *.gz 
+    && tar -zxf *.gz \
+    && rm -f *.gz
 
 WORKDIR /yapi/yapi-1.5.2
 
