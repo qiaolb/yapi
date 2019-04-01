@@ -3,13 +3,13 @@ FROM node:lts-alpine
 RUN npm install -g yapi-cli \
     && apk update && apk add --no-cache mongodb make python git \
     && mkdir /yapi && cd /yapi  \
-    && wget https://github.com/YMFE/yapi/archive/v1.5.7.tar.gz \
+    && wget https://github.com/YMFE/yapi/archive/v1.5.10.tar.gz \
     && tar -zxf *.gz \
     && rm -f *.gz \
-    && cd /yapi/yapi-1.5.7 \
+    && cd /yapi/yapi-1.5.10 \
     && npm install && npm install -g node-gyp
 
-WORKDIR /yapi/yapi-1.5.7
+WORKDIR /yapi/yapi-1.5.10
 
 #ENTRYPOINT ["node"]
 #CMD ["vendors/server/app.js"]
