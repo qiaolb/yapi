@@ -1,15 +1,17 @@
 FROM node:lts-alpine
 
+ARG YAPI_VERSION=1.7.0
+
 RUN npm install -g yapi-cli \
     && apk update && apk add --no-cache mongodb make python git \
     && mkdir /yapi && cd /yapi  \
-    && wget https://github.com/YMFE/yapi/archive/v1.5.10.tar.gz \
+    && wget https://github.com/YMFE/yapi/archive/v$YAPI_VERSION.tar.gz \
     && tar -zxf *.gz \
     && rm -f *.gz \
-    && cd /yapi/yapi-1.5.10 \
+    && cd /yapi/yapi-$YAPI_VERSION \
     && npm install && npm install -g node-gyp
 
-WORKDIR /yapi/yapi-1.5.10
+WORKDIR /yapi/yapi-$YAPI_VERSION
 
 #ENTRYPOINT ["node"]
 #CMD ["vendors/server/app.js"]
