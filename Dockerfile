@@ -1,6 +1,6 @@
 FROM node:lts-alpine
 
-ARG YAPI_VERSION=1.8.1
+ARG YAPI_VERSION=1.8.5
 
 RUN npm install -g yapi-cli \
     && apk update && apk add --no-cache mongodb make python git \
