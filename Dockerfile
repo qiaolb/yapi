@@ -1,4 +1,4 @@
-FROM node:lts-alpine
+FROM node:lts-alpine3.9
 
 ARG YAPI_VERSION=1.8.5
 
