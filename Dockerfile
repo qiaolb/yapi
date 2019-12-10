@@ -2,8 +2,8 @@ FROM node:lts-alpine3.9
 
 ARG YAPI_VERSION=1.8.5
 
-RUN npm install -g yapi-cli \
-    && apk update && apk add --no-cache mongodb make python git \
+RUN apk update && apk add --no-cache mongodb make python git \
+    && npm install -g yapi-cli \
     && mkdir /yapi && cd /yapi  \
     && wget https://github.com/YMFE/yapi/archive/v$YAPI_VERSION.tar.gz \
     && tar -zxf *.gz \
