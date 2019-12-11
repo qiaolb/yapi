@@ -3,7 +3,7 @@ FROM node:lts-alpine3.9
 ARG YAPI_VERSION=1.8.5
 
 RUN apk update \
-    && apk add --no-cache --virtual curldeps gcc libc6-dev make g++ autoconf \
+    && apk add --no-cache --virtual curldeps gcc make g++ autoconf \
     && apk add --no-cache mongodb python git \
     && npm install -g yapi-cli \
     && mkdir /yapi && cd /yapi  \
