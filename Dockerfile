@@ -12,7 +12,7 @@ RUN apk update \
     && rm -f *.gz \
     && cd /yapi/yapi-$YAPI_VERSION \
     && rm -f .npmrc \
-    && npm install && npm install -g node-gyp \
+    && npm install -g node-gyp && npm install \
     && apt delete curldeps
 
 WORKDIR /yapi/yapi-$YAPI_VERSION
