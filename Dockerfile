@@ -11,6 +11,7 @@ RUN apk update \
     && tar -zxf *.gz \
     && rm -f *.gz \
     && cd /yapi/yapi-$YAPI_VERSION \
+    && rm -f .npmrc \
     && npm install && npm install -g node-gyp \
     && apt delete curldeps
 
