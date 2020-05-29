@@ -1,19 +1,18 @@
-FROM node:lts-alpine3.9
+FROM node:lts-buster-slim
 
-ARG YAPI_VERSION=1.8.5
+ARG YAPI_VERSION=1.9.1
 
-RUN apk update \
-    && apk add --no-cache --virtual curldeps gcc make g++ autoconf \
-    && apk add --no-cache mongodb python git \
-    && npm install -g yapi-cli \
+RUN apt install curl \
+    && curl -sS https://www.mongodb.org/static/pgp/server-4.2.asc | apt-key add - \
+    && echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | tee /etc/apt/sources.list.d/mongodb-org-4.2.list  \
+    && apt-get update && apt-get install -y mongodb-org \
     && mkdir /yapi && cd /yapi  \
-    && wget https://github.com/YMFE/yapi/archive/v$YAPI_VERSION.tar.gz \
+    && curl -O https://github.com/YMFE/yapi/archive/v$YAPI_VERSION.tar.gz \
     && tar -zxf *.gz \
     && rm -f *.gz \
     && cd /yapi/yapi-$YAPI_VERSION \
     && rm -f .npmrc \
-    && npm install -g node-gyp && npm install \
-    && apt delete curldeps
+    && npm install
 
 WORKDIR /yapi/yapi-$YAPI_VERSION
 
