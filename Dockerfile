@@ -3,7 +3,7 @@ FROM node:lts-buster-slim
 ARG YAPI_VERSION=1.9.1
 
 #RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
-RUN apt-get update && apt-get install -y wget gnupg make python git  \
+RUN apt-get update && apt-get install -y wget gnupg make python git build-essential  \
     && wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | apt-key add -  \
     && echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | tee /etc/apt/sources.list.d/mongodb-org-4.2.list  \
     && apt-get update && apt-get install -y mongodb-org \
@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y wget gnupg make python git  \
     && rm -f *.gz \
     && cd /yapi/yapi-$YAPI_VERSION \
     && rm -f .npmrc \
-    && npm install
+    && npm install && npm install -g node-gyp
 
 WORKDIR /yapi/yapi-$YAPI_VERSION
 
