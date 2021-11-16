@@ -1,11 +1,11 @@
 FROM node:lts-buster-slim
 
-ARG YAPI_VERSION=1.9.2
+ARG YAPI_VERSION=1.10.2
 ARG BUILD_PACKAGES="wget make python build-essential"
 
 RUN apt-get update && apt-get install -y $BUILD_PACKAGES  \
     && mkdir /yapi && cd /yapi  \
-    && wget https://github.com/YMFE/yapi/archive/v$YAPI_VERSION.tar.gz \
+    && wget https://github.com/YMFE/yapi/archive/refs/tags/v$YAPI_VERSION.tar.gz \
     && tar -zxf *.gz \
     && rm -f *.gz \
     && apt-get remove --purge -y $BUILD_PACKAGES && rm -rf /var/lib/apt/lists/* \
